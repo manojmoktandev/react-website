@@ -54,8 +54,8 @@ const Contact = () => {
           className="contact-inputs">
           <input
             type="text"
-            placeholder="username"
-            name="username"
+            placeholder="name"
+            name="Name"
             required
             autoComplete="off"
           />

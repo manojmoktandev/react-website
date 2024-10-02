@@ -1,7 +1,20 @@
 import styled from "styled-components";
+import {useParams} from "react-router-dom";
+import { useEffect } from "react";
+import { useProductContext } from "../context/productContext";
+
+const API = "https://dummyjson.com/products";
 
 const SingleProduct = () => {
-  return <h1>single page </h1>;
+  const {isSingleProductLoading,singleProduct,getSingleProduct} = useProductContext();
+  const {id} =  useParams();
+  console.log('single',singleProduct);
+  const {id:alias,title} = singleProduct;
+
+  useEffect(()=>{
+    getSingleProduct(`${API}/${id}`);
+  },[]);
+  return <h1>{id}  single page  {title}</h1>;
 };
 
 const Wrapper = styled.section`

@@ -8,14 +8,14 @@ import { useProductContext } from "../context/productContext";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import ReviewProduct from "./ReviewProduct";
+import ImageProduct from "./ImageProduct";
 
 const API = "https://dummyjson.com/products";
 
 const SingleProduct = () => {
   const {isSingleProductLoading,singleProduct,getSingleProduct} = useProductContext();
   const {id} =  useParams();
-  const {id:alias,title,rating,price,description,stock,brand,reviews,image} = singleProduct;
-  console.log(singleProduct);
+  const {id:alias,title,rating,price,description,stock,brand,reviews,images,thumbnail} = singleProduct;
   useEffect(()=>{
     getSingleProduct(`${API}/${id}`);
   },[]);
@@ -29,7 +29,7 @@ const SingleProduct = () => {
       <div className="grid grid-two-column">
         {/* product Images  */}
         <div className="product_images">
-          {/* <MyImage imgs={image} /> */}
+          <ImageProduct imgs={images} />
         </div>
 
         {/* product dAta  */}
